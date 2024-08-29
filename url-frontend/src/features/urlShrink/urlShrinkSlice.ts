@@ -17,11 +17,7 @@ const initialState: UrlState = {
 const urlSlice = createSlice({
   name: 'url',
   initialState,
-  reducers: {
-    setOriginalUrl: (state, action) => {
-      state.originalUrl = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(shortenUrl.pending, (state) => {
@@ -35,8 +31,12 @@ const urlSlice = createSlice({
         state.loading = false;
       });
   },
+  selectors: {
+    selectShortUrl: (state) => state.shortUrl,
+    selectIsLoading: (state) => state.loading
+  }
 });
 
-export const {setOriginalUrl} = urlSlice.actions;
+export const {selectShortUrl, selectIsLoading} = urlSlice.selectors;
 
 export const urlReducer = urlSlice.reducer;

@@ -5,8 +5,8 @@ export const shortenUrl = createAsyncThunk(
   'url/shortenUrl',
   async (originalUrl: string, {rejectWithValue}) => {
     try {
-      const response = await axiosApi.post('/links', {originalUrl});
-      return response.data;
+      const response = await axiosApi.post('/link', {originalUrl});
+      return response.data.shortUrl;
     } catch (e) {
       return rejectWithValue(e);
     }
