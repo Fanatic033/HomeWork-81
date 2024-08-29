@@ -46,8 +46,6 @@ urlRouter.post('/', async (req, res, next) => {
 
 urlRouter.get('/:shortUrl', async (req, res, next) => {
   try {
-
-
     const {shortUrl} = req.params;
     const url = await Url.findOne({shortUrl});
 
