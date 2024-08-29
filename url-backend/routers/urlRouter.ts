@@ -44,5 +44,22 @@ urlRouter.post('/', async (req, res, next) => {
   }
 })
 
+urlRouter.get('/:shortUrl', async (req, res, next) => {
+  try {
+
+
+    const {shortUrl} = req.params;
+    const url = await Url.findOne({shortUrl});
+
+    if (url) {
+      return res.redirect(301, url.originalUrl);
+    }
+
+    return res.status(404).send({error: 'Short URL not found'});
+  } catch (e) {
+    next(e)
+  }
+});
+
 
 export default urlRouter;
