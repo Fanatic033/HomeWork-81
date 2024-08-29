@@ -1,7 +1,9 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
+import {urlReducer} from '../features/urlShrink/urlShrinkSlice.ts';
+
 export const store = configureStore({
   reducer: {
-
+    url: urlReducer,
   },
 });
 
